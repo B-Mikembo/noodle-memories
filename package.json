@@ -1,0 +1,18 @@
+{
+  "name": "noodle-memories-application",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Noodle Memories",
+  "license": "UNLICENSED",
+  "packageManager": "npm@11.5.2",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "husky": "9.1.7",
+    "lint-staged": "16.1.5"
+  }
+}

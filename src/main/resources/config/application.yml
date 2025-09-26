@@ -1,0 +1,8 @@
+logging:
+  level:
+    dev:
+      brice:
+        memories: INFO
+spring:
+  application:
+    name: NoodleMemoriesApplication

@@ -90,5 +90,18 @@
       "indentSize" : 2,
       "springConfigurationFormat" : "yaml"
     }
+  }, {
+    "module" : "maven-wrapper",
+    "date" : "2025-09-26T18:13:18.420697Z",
+    "properties" : {
+      "packageName" : "dev.brice.memories",
+      "projectName" : "Noodle Memories",
+      "baseName" : "NoodleMemoriesApplication",
+      "nodePackageManager" : "npm",
+      "serverPort" : 8080,
+      "endOfLine" : "lf",
+      "indentSize" : 2,
+      "springConfigurationFormat" : "yaml"
+    }
   } ]
 }

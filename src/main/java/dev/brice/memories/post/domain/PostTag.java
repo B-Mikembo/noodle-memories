@@ -8,6 +8,6 @@ public record PostTag(String tag) {
   }
 
   public String get() {
-    return "#" + tag;
+    return "#" + tag.replace(" ", "");
   }
 }

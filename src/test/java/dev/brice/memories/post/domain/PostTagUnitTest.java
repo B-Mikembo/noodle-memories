@@ -26,4 +26,9 @@ public class PostTagUnitTest {
   void shouldGetSimplePostTag() {
     assertThat(new PostTag("tag").get()).isEqualTo("#tag");
   }
+
+  @Test
+  void shouldGetComplexPostTag() {
+    assertThat(new PostTag("tag tag").get()).isEqualTo("#tagtag");
+  }
 }

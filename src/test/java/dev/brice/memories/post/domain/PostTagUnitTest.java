@@ -13,4 +13,11 @@ public class PostTagUnitTest {
       .isExactlyInstanceOf(MissingMandatoryValueException.class)
       .hasMessageContaining("postTag");
   }
+
+  @Test
+  void shouldNotBuildWithBlankPostTag() {
+    assertThatThrownBy(() -> new PostTag(" "))
+      .isExactlyInstanceOf(MissingMandatoryValueException.class)
+      .hasMessageContaining("postTag");
+  }
 }

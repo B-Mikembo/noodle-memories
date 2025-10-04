@@ -4,6 +4,6 @@ import dev.brice.memories.shared.error.domain.Assert;
 
 public record PostTag(String tag) {
   public PostTag {
-    Assert.field("postTag", tag).notNull();
+    Assert.field("postTag", tag).notNull().notBlank();
   }
 }

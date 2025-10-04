@@ -6,4 +6,8 @@ public record PostCreator(String creator) {
   public PostCreator {
     Assert.field("postCreator", creator).notNull().notBlank();
   }
+
+  public String get() {
+    return creator;
+  }
 }

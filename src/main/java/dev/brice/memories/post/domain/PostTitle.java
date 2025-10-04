@@ -6,4 +6,8 @@ public record PostTitle(String title) {
   public PostTitle {
     Assert.field("postTitle", title).notNull().notBlank();
   }
+
+  public String get() {
+    return title;
+  }
 }

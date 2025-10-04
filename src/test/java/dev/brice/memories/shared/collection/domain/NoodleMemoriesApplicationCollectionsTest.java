@@ -2,6 +2,7 @@ package dev.brice.memories.shared.collection.domain;
 
 import static org.assertj.core.api.Assertions.*;
 
+import dev.brice.memories.UnitTest;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -12,7 +13,6 @@ import java.util.Set;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import dev.brice.memories.UnitTest;
 
 @UnitTest
 class NoodleMemoriesApplicationCollectionsTest {

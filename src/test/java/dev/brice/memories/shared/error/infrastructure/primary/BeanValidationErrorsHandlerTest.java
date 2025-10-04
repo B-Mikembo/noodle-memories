@@ -3,6 +3,10 @@ package dev.brice.memories.shared.error.infrastructure.primary;
 import static org.mockito.Mockito.*;
 
 import ch.qos.logback.classic.Level;
+import dev.brice.memories.Logs;
+import dev.brice.memories.LogsSpy;
+import dev.brice.memories.LogsSpyExtension;
+import dev.brice.memories.UnitTest;
 import jakarta.validation.ConstraintViolationException;
 import jakarta.validation.Validation;
 import jakarta.validation.constraints.NotNull;
@@ -11,10 +15,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.core.MethodParameter;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.MethodArgumentNotValidException;
-import dev.brice.memories.Logs;
-import dev.brice.memories.LogsSpy;
-import dev.brice.memories.LogsSpyExtension;
-import dev.brice.memories.UnitTest;
 
 @UnitTest
 @ExtendWith(LogsSpyExtension.class)

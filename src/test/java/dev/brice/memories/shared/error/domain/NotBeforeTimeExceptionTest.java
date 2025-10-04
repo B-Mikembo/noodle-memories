@@ -2,9 +2,9 @@ package dev.brice.memories.shared.error.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import dev.brice.memories.UnitTest;
 import java.time.Instant;
 import org.junit.jupiter.api.Test;
-import dev.brice.memories.UnitTest;
 
 @UnitTest
 class NotBeforeTimeExceptionTest {

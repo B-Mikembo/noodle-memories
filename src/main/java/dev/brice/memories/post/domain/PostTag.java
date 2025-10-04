@@ -6,4 +6,8 @@ public record PostTag(String tag) {
   public PostTag {
     Assert.field("postTag", tag).notNull().notBlank();
   }
+
+  public String get() {
+    return "#" + tag;
+  }
 }

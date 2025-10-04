@@ -13,4 +13,11 @@ public class PostCreatorUnitTest {
       .isExactlyInstanceOf(MissingMandatoryValueException.class)
       .hasMessageContaining("postCreator");
   }
+
+  @Test
+  void shouldNotBuildWithBlankPostCreator() {
+    assertThatThrownBy(() -> new PostCreator(" "))
+      .isExactlyInstanceOf(MissingMandatoryValueException.class)
+      .hasMessageContaining("postCreator");
+  }
 }

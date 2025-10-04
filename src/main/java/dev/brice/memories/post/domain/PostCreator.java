@@ -4,6 +4,6 @@ import dev.brice.memories.shared.error.domain.Assert;
 
 public record PostCreator(String creator) {
   public PostCreator {
-    Assert.field("postCreator", creator).notNull();
+    Assert.field("postCreator", creator).notNull().notBlank();
   }
 }

@@ -10,4 +10,12 @@ public class PostTagsUnitTest {
   void shouldGetEmptyPostTags() {
     assertThat(new PostTags().get()).isEmpty();
   }
+
+  @Test
+  void shouldAddAndGetPostTags() {
+    var postTags = new PostTags();
+
+    postTags.add(new PostTag("tag"));
+    assertThat(postTags.get()).containsExactlyInAnyOrder(new PostTag("tag"));
+  }
 }

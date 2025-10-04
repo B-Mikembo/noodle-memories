@@ -6,4 +6,8 @@ public record PostMessage(String message) {
   public PostMessage {
     Assert.field("postMessage", message).notNull();
   }
+
+  public String get() {
+    return message;
+  }
 }

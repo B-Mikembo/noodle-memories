@@ -1,5 +1,6 @@
 package dev.brice.memories.post.domain;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import dev.brice.memories.shared.error.domain.MissingMandatoryValueException;
@@ -12,5 +13,10 @@ public class PostMessageUnitTest {
     assertThatThrownBy(() -> new PostMessage(null))
       .isExactlyInstanceOf(MissingMandatoryValueException.class)
       .hasMessageContaining("postMessage");
+  }
+
+  @Test
+  void shouldGetPostMessage() {
+    assertThat(new PostMessage("message").get()).isEqualTo("message");
   }
 }

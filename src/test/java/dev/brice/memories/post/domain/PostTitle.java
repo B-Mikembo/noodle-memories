@@ -4,7 +4,6 @@ import dev.brice.memories.shared.error.domain.Assert;
 
 public record PostTitle(String title) {
   public PostTitle {
-    Assert.field("postTitle", title)
-      .notNull();
+    Assert.field("postTitle", title).notNull().notBlank();
   }
 }

@@ -12,6 +12,10 @@ public record PostLike(int like) {
   }
 
   public int get() {
-    return 0;
+    return like;
+  }
+
+  public PostLike increment() {
+    return new PostLike(like + 1);
   }
 }

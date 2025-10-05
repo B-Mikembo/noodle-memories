@@ -19,4 +19,11 @@ public class PostLikeUnitTest {
   void shouldGetZeroByDefault() {
     assertThat(new PostLike().get()).isEqualTo(0);
   }
+
+  @Test
+  void shouldIncrementAndGetPostLike() {
+    var postLike = new PostLike();
+
+    assertThat(postLike.increment()).isExactlyInstanceOf(PostLike.class).extracting(PostLike::get).isEqualTo(1);
+  }
 }

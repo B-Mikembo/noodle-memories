@@ -24,7 +24,7 @@ public class PostsApplicationServiceUnitTest {
 
   @Test
   void shouldGetPostsFromRepository() {
-    when(repository.findAll()).thenReturn(new Posts(List.of(post())));
+    when(repository.getAll()).thenReturn(new Posts(List.of(post())));
 
     var posts = service.posts();
 

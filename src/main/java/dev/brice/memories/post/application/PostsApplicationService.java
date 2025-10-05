@@ -14,6 +14,6 @@ public class PostsApplicationService {
   }
 
   public Posts posts() {
-    return postsRepository.findAll();
+    return postsRepository.getAll();
   }
 }

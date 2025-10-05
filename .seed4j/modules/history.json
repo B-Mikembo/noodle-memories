@@ -223,6 +223,20 @@
         "indentSize": 2,
         "springConfigurationFormat": "yaml"
       }
+    },
+    {
+      "module": "jpa-postgresql",
+      "date": "2025-10-05T20:00:16.505175Z",
+      "properties": {
+        "packageName": "dev.brice.memories",
+        "projectName": "Noodle Memories",
+        "baseName": "NoodleMemoriesApplication",
+        "nodePackageManager": "npm",
+        "serverPort": 8080,
+        "endOfLine": "lf",
+        "indentSize": 2,
+        "springConfigurationFormat": "yaml"
+      }
     }
   ]
 }

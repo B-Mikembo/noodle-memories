@@ -34,6 +34,10 @@ npm install
 ./mvnw
 ```
 
+```bash
+docker compose -f src/main/docker/postgresql.yml up -d
+```
+
 <!-- seed4j-needle-startupCommand -->
 
 ## Documentation
@@ -44,5 +48,6 @@ npm install
 - [Vue](documentation/vue.md)
 - [Logs Spy](documentation/logs-spy.md)
 - [CORS configuration](documentation/cors-configuration.md)
+- [PostgreSQL](documentation/postgresql.md)
 
 <!-- seed4j-needle-documentation -->

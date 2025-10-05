@@ -17,5 +17,6 @@ public class PostUnitTest {
     assertThat(post.tags()).isNotNull();
     assertThat(post.like()).isEqualTo(new PostLike());
     assertThat(post.createdAt()).isNotNull();
+    assertThat(post.id()).isNotNull();
   }
 }

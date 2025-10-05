@@ -1,6 +1,7 @@
 package dev.brice.memories.post.domain;
 
 import java.util.Set;
+import java.util.UUID;
 
 public class Post {
 
@@ -10,6 +11,18 @@ public class Post {
   private final PostTags tags;
   private final PostLike like;
   private final PostCreatedAt createdAt;
+  private final PostId id;
+
+  public Post(UUID id, String title, String message, String creator, Set<String> tags) {
+    this.title = new PostTitle(title);
+    this.message = new PostMessage(message);
+    this.creator = new PostCreator(creator);
+    this.tags = new PostTags();
+    tags.forEach(tag -> this.tags.add(new PostTag(tag)));
+    this.like = new PostLike();
+    this.createdAt = new PostCreatedAt();
+    this.id = new PostId(id);
+  }
 
   public Post(String title, String message, String creator, Set<String> tags) {
     this.title = new PostTitle(title);
@@ -19,6 +32,7 @@ public class Post {
     tags.forEach(tag -> this.tags.add(new PostTag(tag)));
     this.like = new PostLike();
     this.createdAt = new PostCreatedAt();
+    this.id = new PostId();
   }
 
   public PostTitle title() {
@@ -43,5 +57,9 @@ public class Post {
 
   public PostCreatedAt createdAt() {
     return createdAt;
+  }
+
+  public PostId id() {
+    return id;
   }
 }

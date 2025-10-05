@@ -1,10 +1,18 @@
 package dev.brice.memories.post.domain;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
-public record Posts() {
+public record Posts(List<Post> posts) {
+  public Posts() {
+    this(new ArrayList<>());
+  }
+
   public List<Post> get() {
-    return Collections.emptyList();
+    return posts;
+  }
+
+  public void add(Post post) {
+    posts.add(post);
   }
 }

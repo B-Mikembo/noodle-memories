@@ -13,4 +13,12 @@ public class PostIdUnitTest {
     assertThat(id.get()).isNotNull();
     assertThat(id.get()).isEqualTo(id.get());
   }
+
+  @Test
+  void shouldGetRandomUniqueIdFromConstructorWithoutId() {
+    var id = new PostId(null);
+
+    assertThat(id.get()).isNotNull();
+    assertThat(id.get()).isEqualTo(id.get());
+  }
 }

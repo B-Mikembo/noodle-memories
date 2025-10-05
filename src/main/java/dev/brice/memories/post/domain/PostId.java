@@ -4,10 +4,14 @@ import java.util.UUID;
 
 public record PostId(UUID id) {
   public PostId() {
-    this(UUID.randomUUID());
+    this(null);
   }
 
-  public PostId get() {
-    return new PostId(id);
+  public PostId(UUID id) {
+    this.id = id == null ? UUID.randomUUID() : id;
+  }
+
+  public UUID get() {
+    return id;
   }
 }

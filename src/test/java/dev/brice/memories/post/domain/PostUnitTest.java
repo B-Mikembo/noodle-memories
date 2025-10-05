@@ -19,4 +19,11 @@ public class PostUnitTest {
     assertThat(post.createdAt()).isNotNull();
     assertThat(post.id()).isNotNull();
   }
+
+  @Test
+  void shouldBeEqualToSelf() {
+    var post = post();
+
+    assertThat(post.equals(post)).isTrue();
+  }
 }

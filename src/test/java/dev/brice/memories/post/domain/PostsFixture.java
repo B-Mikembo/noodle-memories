@@ -14,4 +14,8 @@ public final class PostsFixture {
   public static UUID id() {
     return UUID.fromString("ff0ac298-3959-4969-a930-8b7aa36ad939");
   }
+
+  public static PostId postId() {
+    return new PostId(id());
+  }
 }

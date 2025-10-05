@@ -31,4 +31,15 @@ public class PostUnitTest {
   void shouldNotBeEqualToNull() {
     assertThat(post().equals(null)).isFalse();
   }
+
+  @Test
+  @SuppressWarnings("unlikely-arg-type")
+  void shouldNotBeEqualToAnotherClass() {
+    assertThat(post().equals("post")).isFalse();
+  }
+
+  @Test
+  void shouldNotBeEqualToPostWithAnotherId() {
+    assertThat(post().id().equals(new PostId())).isFalse();
+  }
 }

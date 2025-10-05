@@ -26,4 +26,9 @@ public class PostUnitTest {
 
     assertThat(post.equals(post)).isTrue();
   }
+
+  @Test
+  void shouldNotBeEqualToNull() {
+    assertThat(post().equals(null)).isFalse();
+  }
 }

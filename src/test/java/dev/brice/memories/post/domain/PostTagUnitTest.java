@@ -31,4 +31,9 @@ public class PostTagUnitTest {
   void shouldGetComplexPostTag() {
     assertThat(new PostTag("tag tag").get()).isEqualTo("#tagtag");
   }
+
+  @Test
+  void shouldNotAppendHashTagIfAlreadyExists() {
+    assertThat(new PostTag("#ddd").get()).isEqualTo("#ddd");
+  }
 }

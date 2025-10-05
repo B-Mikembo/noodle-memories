@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 public class PostTagsUnitTest {
 
   @Test
-  void shouldGetEmptyPostTags() {
+  void shouldGetEmptyPostTagsAtCreation() {
     assertThat(new PostTags().get()).isEmpty();
   }
 

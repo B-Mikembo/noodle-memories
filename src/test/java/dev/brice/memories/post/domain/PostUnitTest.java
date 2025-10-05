@@ -1,13 +1,13 @@
 package dev.brice.memories.post.domain;
 
+import static dev.brice.memories.post.domain.PostsFixture.post;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.Set;
 import org.junit.jupiter.api.Test;
 
 public class PostUnitTest {
 
-  private final Post post = new Post("title", "message", "creator", Set.of("ddd", "craft"));
+  private final Post post = post();
 
   @Test
   void shouldGetNewPostInformation() {

@@ -15,6 +15,10 @@ public final class PostsFixture {
     return UUID.fromString("ff0ac298-3959-4969-a930-8b7aa36ad939");
   }
 
+  public static Post postWithRandomPostId() {
+    return new Post(UUID.randomUUID(), "title", "message", "creator", Set.of("ddd", "craft"));
+  }
+
   public static PostId postId() {
     return new PostId(id());
   }

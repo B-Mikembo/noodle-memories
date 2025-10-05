@@ -1,5 +1,6 @@
 package dev.brice.memories.post.domain;
 
+import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 
@@ -61,5 +62,16 @@ public class Post {
 
   public PostId id() {
     return id;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (!(o instanceof Post post)) return false;
+    return Objects.equals(id, post.id);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hashCode(id);
   }
 }

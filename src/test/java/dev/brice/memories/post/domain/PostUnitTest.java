@@ -1,6 +1,7 @@
 package dev.brice.memories.post.domain;
 
 import static dev.brice.memories.post.domain.PostsFixture.post;
+import static dev.brice.memories.post.domain.PostsFixture.postWithRandomPostId;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;
@@ -40,6 +41,11 @@ public class PostUnitTest {
 
   @Test
   void shouldNotBeEqualToPostWithAnotherId() {
-    assertThat(post().id().equals(new PostId())).isFalse();
+    assertThat(post().equals(postWithRandomPostId())).isFalse();
+  }
+
+  @Test
+  void shouldBeEqualToPostWithSameId() {
+    assertThat(post().equals(post())).isTrue();
   }
 }

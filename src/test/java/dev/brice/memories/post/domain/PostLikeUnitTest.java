@@ -1,0 +1,17 @@
+package dev.brice.memories.post.domain;
+
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
+import dev.brice.memories.shared.error.domain.MissingMandatoryValueException;
+import dev.brice.memories.shared.error.domain.NumberValueTooLowException;
+import org.junit.jupiter.api.Test;
+
+public class PostLikeUnitTest {
+
+  @Test
+  void shouldNotBuildWithNegativePostLike() {
+    assertThatThrownBy(() -> new PostLike(-1))
+      .isExactlyInstanceOf(NumberValueTooLowException.class)
+      .hasMessageContaining("postLike");
+  }
+}

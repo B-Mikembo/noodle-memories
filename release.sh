@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 GIT_DEVELOP_BRANCH='develop'
 GIT_REMOTE='origin'
 

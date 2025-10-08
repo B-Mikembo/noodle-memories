@@ -1,0 +1,16 @@
+name: Release Drafter
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - develop
+
+jobs:
+  update_release_draft:
+    if: github.repository == 'B-Mikembo/noodle-memories'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: release-drafter/release-drafter@v6
+        id: release-drafter
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN  }}

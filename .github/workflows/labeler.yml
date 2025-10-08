@@ -9,6 +9,9 @@ on:
 jobs:
   apply-label:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
     steps:
       - name: View context attributes
         uses: actions/github-script@v8

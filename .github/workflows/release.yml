@@ -31,7 +31,6 @@ jobs:
           chmod +x mvnw
           ./mvnw clean verify
           ARTIFACT_VERSION=$(./mvnw help:evaluate -Dexpression=project.version -q -DforceStdout)
-          rm target/*${ARTIFACT_VERSION}.jar
           rm target/noodle-memories-application-${ARTIFACT_VERSION}.jar.original target/noodle-memories-application-${ARTIFACT_VERSION}.jar
       - name: 'Artifact: upload JAR'
         uses: actions/upload-artifact@v4

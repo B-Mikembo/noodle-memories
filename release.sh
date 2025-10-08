@@ -12,7 +12,7 @@ show_syntax() {
   exit 1
 }
 
-currentVersion=$(./mvnw help:evaluate -Dexpression:project.version -q -DforceStdout)
+currentVersion=$(./mvnw help:evaluate -Dexpression=project.version -q -DforceStdout)
 releaseVersion=${currentVersion//-SNAPSHOT/}
 
 checkGit=$(git status --porcelain | wc -l)
@@ -39,14 +39,14 @@ elif [[ "$1" == "minor" ]]; then
   echo "*** version: remove SNAPSHOT and change to minor version"
   ./mvnw versions:set -DremoveSnapshot versions:commit -q
   ./mvnw build-helper:parse-version versions:set \
-    -DnewVersion=$\{parsedVersion.majorVersion}.\${parsedVersion.nextMinorVersion}.0 \
+    -DnewVersion=\${parsedVersion.majorVersion}.\${parsedVersion.nextMinorVersion}.0 \
     versions:commit -q
 
 elif [[ "$1" == "major" ]]; then
   echo "*** version: remove SNAPSHOT and change to major version"
   ./mvnw versions:set -DremoveSnapshot versions:commit -q
   ./mvnw build-helper:parse-version versions:set \
-    -DnewVersion=$\{parsedVersion.nextMajorVersion}.0.0 \
+    -DnewVersion=\${parsedVersion.nextMajorVersion}.0.0 \
     versions:commit -q
 
 else
@@ -65,12 +65,12 @@ git tag -a v"${releaseVersion}" -m "Release v${releaseVersion}"
 git push $GIT_REMOTE v"${releaseVersion}"
 
 echo "*** version: add SNAPSHOT"
-./mvnw build-hepler:parse-version versions:set \
+./mvnw build-helper:parse-version versions:set \
   -DnewVersion=\${parsedVersion.majorVersion}.\${parsedVersion.minorVersion}.\${parsedVersion.nextIncrementalVersion}-SNAPSHOT \
   versions:commit -q
 
 echo "*** git: commit, push to $GIT_DEVELOP_BRANCH..."
-nextVersion=$(./mvnw hepl:evaluate -Dexpression=project.version -q -DforceStdout)
+nextVersion=$(./mvnw help:evaluate -Dexpression=project.version -q -DforceStdout)
 npm version "${nextVersion}" --no-git-tag-version
 git add . && git commit -m "Update to next version v${nextVersion}"
 git push $GIT_REMOTE $GIT_DEVELOP_BRANCH

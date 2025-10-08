@@ -15,7 +15,7 @@ show_syntax() {
 currentVersion=$(./mvnw help:evaluate -Dexpression=project.version -q -DforceStdout)
 releaseVersion=${currentVersion//-SNAPSHOT/}
 
-checkGit=$(git status --porcelain | wc -l)
+checkGit=$(git status --porcelain | wc -l | tr -d ' ')
 if [[ $checkGit != 0 ]]; then
   echo "*** check: there are uncommitted changes..."
   echo " "

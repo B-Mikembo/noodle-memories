@@ -1,0 +1,36 @@
+template: |
+  ##  Release Notes
+
+  $CHANGES
+
+change-template: '- $TITLE - [#$NUMBER]($URL) by @$AUTHOR'
+categories:
+  - title: ⭐️ Important fixes and improvements
+    labels:
+      - 'theme: important'
+  - title: 💎 Features
+    labels:
+      - 'area: feature request :bulb:'
+  - title: 🔧 Enhancements
+    labels:
+      - 'area: enhancement :wrench:'
+  - title: 🔨 Refactoring
+    labels:
+      - 'area: refactoring'
+  - title: 🐞 Bug fixes
+    labels:
+      - 'area: bug :bug:'
+  - title: 🚨 Breaking changes
+    labels:
+      - 'area: breaking change'
+  - title: 🖥️ Frontend
+    labels:
+      - 'client: vue'
+  - title: 🍃 Spring Boot
+    labels:
+      - 'server: spring boot'
+  - title: 🪶 Maven
+    labels:
+      - 'theme: maven'
+  - title: 📦 Dependency updates
+    label: 'area: dependencies'

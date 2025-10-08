@@ -32,9 +32,6 @@ jobs:
           ./mvnw clean verify
           ARTIFACT_VERSION=$(./mvnw help:evaluate -Dexpression=project.version -q -DforceStdout)
           rm target/*${ARTIFACT_VERSION}.jar
-          rm target/*${ARTIFACT_VERSION}-javadoc.jar
-          rm target/*${ARTIFACT_VERSION}-sources.jar
-          rm target/*${ARTIFACT_VERSION}-tests.jar
           rm target/noodle-memories-application-${ARTIFACT_VERSION}.jar.original target/noodle-memories-application-${ARTIFACT_VERSION}.jar
       - name: 'Artifact: upload JAR'
         uses: actions/upload-artifact@v4

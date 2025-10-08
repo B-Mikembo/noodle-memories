@@ -8,7 +8,7 @@
 
   <groupId>dev.brice.memories</groupId>
   <artifactId>noodle-memories-application</artifactId>
-  <version>0.0.5</version>
+  <version>0.0.6-SNAPSHOT</version>
   <name>NoodleMemoriesApplication</name>
   <description>Noodle Memories</description>
   <packaging>jar</packaging>

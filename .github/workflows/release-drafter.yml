@@ -9,6 +9,10 @@ jobs:
   update_release_draft:
     if: github.repository == 'B-Mikembo/noodle-memories'
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: read
+      issues: read
     steps:
       - uses: release-drafter/release-drafter@v6
         id: release-drafter

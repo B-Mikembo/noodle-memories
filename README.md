@@ -34,7 +34,6 @@ npm install
 ./mvnw
 ```
 
-
 <!-- seed4j-needle-startupCommand -->
 
 ## Documentation

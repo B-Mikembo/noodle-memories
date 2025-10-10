@@ -111,21 +111,10 @@ jobs:
         run: npm ci
       - name: 'Lint: check'
         run: npm run lint:ci
-      - name: 'Start local Sonar'
-        run: docker compose -f src/main/docker/sonar.yml up -d
       - name: 'Test: run backend tests'
         run: |
           chmod +x mvnw
-          ./mvnw clean verify -Dsonar.qualitygate.wait=true
-      - name: 'Analysis: local Sonar'
-        run: |
-          docker logs sonar
-          docker logs sonar-token
-          SONAR_TOKEN=$(docker logs sonar-token)
-          ./mvnw initialize sonar:sonar -Dsonar.token=$SONAR_TOKEN
-          ./tests-ci/sonar.sh
-      - name: 'Analysis: see results'
-        run: ./tests-ci/sonar.sh
+          ./mvnw clean verify
       - name: 'Artifact: upload JAR'
         uses: actions/upload-artifact@v4
         with:

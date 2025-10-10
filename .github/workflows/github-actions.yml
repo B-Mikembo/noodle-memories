@@ -133,7 +133,7 @@ jobs:
       - name: 'Validation Status checks'
         run: |
           echo 'Configuration for Status checks that are required'
-          echo '${{ toJSON(needs) }}
+          echo '${{ toJSON(needs) }}'
           if [[ (('skipped' == '${{ needs.tests-linux.result }}') || ('success' == '${{ needs.tests-linux.result }}')) ]]; then
             exit 0
           fi

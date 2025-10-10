@@ -12,6 +12,7 @@
     "dev": "npm-run-all --parallel dev:*",
     "dev:vite": "vite",
     "lint": "eslint .",
+    "lint:ci": "eslint . && npm run prettier:check",
     "prepare": "husky",
     "prettier:check": "prettier --check .",
     "prettier:format": "prettier --write .",

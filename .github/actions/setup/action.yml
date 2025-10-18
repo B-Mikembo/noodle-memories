@@ -1,0 +1,48 @@
+name: 'Setup'
+description: 'Setup environment with Java and Node'
+inputs:
+  java-version:
+    description: 'Java version to use'
+    required: true
+    default: '25'
+  node-version:
+    description: 'Node version to use'
+    required: true
+    default: 'lts/*'
+  node-package-manager:
+    description: 'Package manager to use for installing node dependencies'
+    required: true
+    default: 'npm'
+runs:
+  using: 'composite'
+  steps:
+    - name: 'Setup: pnpm'
+      if: ${{ inputs.node-package-manager == 'pnpm' }}
+      uses: pnpm/action-setup@v4
+      with:
+        version: 10
+    - name: 'Setup: Node.js'
+      uses: actions/setup-node@v5
+      with:
+        node-version: '${{ inputs.node-version }}'
+        check-latest: true
+    - name: 'Setup: update NPM'
+      if: ${{ inputs.node-package-manager == 'npm' }}
+      shell: bash
+      run: npm install -g npm
+    - name: 'Setup: Java ${{ inputs.java-version }}'
+      uses: actions/setup-java@v5
+      with:
+        distribution: 'temurin'
+        java-version: '${{ inputs.java-version }}'
+        check-latest: true
+    - name: 'Disable maven interactive mode'
+      shell: bash
+      run: |
+        sed -i 's/<servers>/<interactiveMode>false\<\/interactiveMode>\n  <servers>/g' ~/.m2/settings.xml
+    - name: 'Setup: check tools'
+      shell: bash
+      run: |
+        node -v
+        npm -v
+        java -version

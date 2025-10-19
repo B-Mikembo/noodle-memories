@@ -3,7 +3,6 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref || (github.ref == 'refs/heads/develop' && github.sha) || github.ref }}
   cancel-in-progress: true
 on:
-  workflow_dispatch:
   push:
     branches:
       - develop
@@ -14,8 +13,6 @@ jobs:
   setup:
     name: setup
     runs-on: ubuntu-latest
-    outputs:
-      skip-ci: ${{ steps.check-ci-skip.outputs.skip_ci }}
     steps:
       - name: Checkout
         uses: actions/checkout@v5
@@ -37,36 +34,12 @@ jobs:
           pr_title=$(echo "$PR_TITLE" | tr -d '[:alnum:][:space:]\[\]')
           echo "commit_message=$commit_message" >> $GITHUB_OUTPUT
           echo "pr_title=$pr_title" >> $GITHUB_OUTPUT
-      - name: 'Check for ci skip tags'
-        id: check-ci-skip
-        run: |
-          commit_message='${{ steps.prepare-messages.outputs.commit_message }}'
-          pr_title='${{ steps.prepare-messages.outputs.pr_title }}'
-          skip_tags=('[ci ignore]' '[ignore ci]')
 
-          echo "Checking commit message and pr title for ci skip tags..."
-          skip_ci="false"
-
-          for tag in "${skip_tags[@]}"; do
-            if [[ "$commit_message" == *"$tag"* ]] || [[ "$pr_title" == *"$tag"* ]]; then
-              echo "Found ci skip tag '$tag'."
-              echo "skip_ci=true" >> $GITHUB_OUTPUT
-              skip_ci="true"
-              break
-            fi
-          done
-
-          if [[ "$skip_ci" == "false" ]]; then
-            echo "No ci skip tag found."
-            echo "skip_ci=false" >> $GITHUB_OUTPUT
-          fi
   tests-windows:
     name: tests-windows
     needs: [setup]
     runs-on: windows-2025
     timeout-minutes: 20
-    if: >-
-      needs.setup.outputs.skip_ci != 'true'
     steps:
       - name: 'Setup: checkout project'
         uses: actions/checkout@v5
@@ -85,13 +58,12 @@ jobs:
       - name: 'Test: run backend tests'
         run: |
           ./mvnw clean verify
+
   tests-linux:
     name: tests-linux
     needs: [setup]
     runs-on: ubuntu-latest
     timeout-minutes: 20
-    if: >-
-      needs.setup.outputs.skip_ci != 'true'
     steps:
       - name: 'Setup: checkout project'
         uses: actions/checkout@v5
@@ -121,6 +93,7 @@ jobs:
           name: noodle-memories-jar
           path: '${{ github.workspace }}/target/*.jar'
           retention-days: 1
+
   status-checks:
     name: status-checks
     needs: [tests-linux]
@@ -138,3 +111,21 @@ jobs:
             exit 0
           fi
           exit 1
+
+  dependabot-auto-merge:
+    name: dependabot-auto-merge
+    permissions:
+      pull-requests: write
+      contents: write
+    runs-on: ubuntu-latest
+    if: github.ref != 'refs/heads/main' && github.event.pull_request.user.login == 'dependabot[bot]'
+    steps:
+      - name: 'Dependabot metadata'
+        id: dependabot-metadata
+        uses: dependabot/fetch-metadata@v2
+      - name: 'Enable auto-merge for Dependabot PRs'
+        if: steps.dependabot-metadata.outputs.update-type != 'version-update:semver-major'
+        run: gh pr merge --auto --merge "$PR_URL"
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

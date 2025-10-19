@@ -7,7 +7,7 @@ RUN chmod +x mvnw \
     -Dmaven.javadoc.skip=true \
     -Dmaven.source.skip \
     -Ddevelocity.cache.remote.enabled=false \
-    && mv /code/app/target/*-exec.jar /code/noodle-memories.jar
+    && mv /code/app/target/*.jar /code/noodle-memories.jar
 
 FROM openjdk:25-slim
 COPY --from=build /code/*.jar /code/

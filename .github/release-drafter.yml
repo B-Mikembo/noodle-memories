@@ -7,30 +7,30 @@ change-template: '- $TITLE - [#$NUMBER]($URL) by @$AUTHOR'
 categories:
   - title: ⭐️ Important fixes and improvements
     labels:
-      - 'theme: important'
+      - 'important'
   - title: 💎 Features
     labels:
-      - 'area: feature request :bulb:'
+      - 'feature request :bulb:'
   - title: 🔧 Enhancements
     labels:
-      - 'area: enhancement :wrench:'
+      - 'enhancement :wrench:'
   - title: 🔨 Refactoring
     labels:
-      - 'area: refactoring'
+      - 'refactoring'
   - title: 🐞 Bug fixes
     labels:
-      - 'area: bug :bug:'
+      - 'bug :bug:'
   - title: 🚨 Breaking changes
     labels:
-      - 'area: breaking change'
+      - 'breaking change'
   - title: 🖥️ Frontend
     labels:
-      - 'client: vue'
+      - 'vue'
   - title: 🍃 Spring Boot
     labels:
-      - 'server: spring boot'
+      - 'spring boot'
   - title: 🪶 Maven
     labels:
-      - 'theme: maven'
+      - 'maven'
   - title: 📦 Dependency updates
-    label: 'area: dependencies'
+    label: 'dependencies'

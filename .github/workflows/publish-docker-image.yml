@@ -13,8 +13,8 @@ jobs:
   build_docker_image:
     name: Build Docker image
     runs-on: ubuntu-24.04
-    env: DOCKER_IMAGE_NAME = 'bricekm/noodle-memories'
-
+    env:
+      DOCKER_IMAGE_NAME: 'bricekm/noodle-memories'
     steps:
       - name: 'Checkout repository'
         uses: actions/checkout@v5
